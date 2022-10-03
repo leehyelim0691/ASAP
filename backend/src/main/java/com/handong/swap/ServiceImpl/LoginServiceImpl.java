@@ -30,7 +30,7 @@ public class LoginServiceImpl implements LoginService{
 	UserDAO userDAO;
 	
 	@Override
-	public String setUserTokenJsonData(String name, String email, String token, Date expire_token) throws JsonProcessingException {
+	public String setUserTokenJsonData(String name, String email, String token) throws JsonProcessingException {
 		LoginDTO user = loginDAO.getUserByEmail(email);
 		
 		
@@ -43,7 +43,7 @@ public class LoginServiceImpl implements LoginService{
 			return "newUser";
 		}
 	    
-		user.setExpire_token(expire_token);
+//		user.setExpire_token(expire_token);
 	    user.setToken(token);
 	    
 	    loginDAO.updateUserByToken(user);

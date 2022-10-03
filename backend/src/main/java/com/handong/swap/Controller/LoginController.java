@@ -37,16 +37,16 @@ public class LoginController {
 		DateFormat df = new SimpleDateFormat("dd-MM-yy HH:mm:ss");
 		
 		String token = httpServletRequest.getParameter("token");
-		String email = httpServletRequest.getParameter("email");
-		String name = httpServletRequest.getParameter("name");
-		Date expire_token = new Date(Long.parseLong((httpServletRequest.getParameter("expire"))));
+//		String email = httpServletRequest.getParameter("email");
+//		String name = httpServletRequest.getParameter("name");
+//		Date expire_token = new Date(Long.parseLong((httpServletRequest.getParameter("expire"))));
 		
 		RestTemplate restTemplate = new RestTemplate();
 		String requestUrl;
 
-		if(!email.contains("handong.ac.kr") && !email.contains("handong.edu")) {
-			return "notHandong";
-		}
+//		if(!email.contains("handong.ac.kr") && !email.contains("handong.edu")) {
+//			return "notHandong";
+//		}
 		
 		try{
 			requestUrl = UriComponentsBuilder.fromHttpUrl("https://oauth2.googleapis.com/tokeninfo")
@@ -61,12 +61,17 @@ public class LoginController {
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String,String> userInfo = mapper.readValue(resultJson, new TypeReference<Map<String, String>>(){});
 		System.out.println(userInfo.toString());
-		
-		if(email.equals(userInfo.get("email"))) {
-			return loginService.setUserTokenJsonData(name, email, token, expire_token);
-		}else {
-			return "fail";
-		}
+		String email = userInfo.get("email");
+		String name = userInfo.get("name");
+//		Date expire_token = new Date();
+//		System.out.println("expire_token: "+ expire_token.toString());
+//		if(email.equals(userInfo.get("email"))) {
+//			return loginService.setUserTokenJsonData(name, email, token, expire_token);
+//		}else {
+//			return "fail";
+//		}
+		//return loginService.setUserTokenJsonData(name, email, token, expire_token);
+		return loginService.setUserTokenJsonData(name, email, token);
 		
 	}
 	

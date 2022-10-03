@@ -9,7 +9,8 @@ import com.handong.swap.DTO.LoginDTO;
 
 public interface LoginService {
 	
-	public String setUserTokenJsonData(String name, String email, String token, Date expire_token) throws JsonProcessingException;
+//	public String setUserTokenJsonData(String name, String email, String token, Date expire_token) throws JsonProcessingException;
+	public String setUserTokenJsonData(String name, String email, String token) throws JsonProcessingException;
 	public int insertUser(LoginDTO user);
 
 }
