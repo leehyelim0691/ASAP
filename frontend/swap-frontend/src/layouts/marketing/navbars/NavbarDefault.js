@@ -169,6 +169,7 @@ const NavbarDefault = ({ headerstyle }, { props }) => {
 
                     {/* <div className={`navbar-nav navbar-right-wrap ms-auto d-lg-none nav-top-wrap ${isLogin ? (isDesktop || isLaptop ? "d-none" : "d-flex") : "d-none"}`}> */}
                     <div className="navbar-nav navbar-right-wrap ms-auto d-flex nav-top-wrap">
+                        <span className=""></span>
                         <QuickMenu />
                     </div>
 
